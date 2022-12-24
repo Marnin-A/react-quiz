@@ -1,0 +1,18 @@
+.card {
+  width: 500px;
+  height: 400px;
+  background-color: rgb(255, 255, 255);
+  border-radius: 15px;
+  display: flex;
+  flex-direction: column;
+}
+.card-content {
+  padding-left: 50px;
+  padding-top: 50px;
+  padding-right: 50px;
+}
+#submit {
+  background-color: #8d44ad;
+  width: 100%;
+  align-self: flex-end;
+}
