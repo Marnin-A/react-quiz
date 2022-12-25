@@ -15,3 +15,7 @@ function App() {
 }
 
 export default App;
+
+// Features
+// 1. Converts html code to regular characters.
+// 2.
