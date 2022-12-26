@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
+import LoadingAnimation from "../assets/quiz_loading.gif";
 import "./card.css";
 
 const card = () => {
@@ -7,6 +8,7 @@ const card = () => {
   const [correctAnswer, setCorrectAnswer] = useState("");
   const [incorrectAnswers, setinCorrectAnswers] = useState([]);
   const [allPossibleAnswers, setAllPossibleAnswers] = useState([]);
+  const [Loading, setLoading] = useState(true);
 
   // Get question and answer data
   useEffect(() => {
@@ -15,6 +17,7 @@ const card = () => {
         "https://opentdb.com/api.php?amount=1&category=18&difficulty=medium&type=multiple"
       )
       .then((res) => {
+        setLoading(false);
         const TriviaData = res.data.results[0];
         setTriviaData(TriviaData);
         const answer = TriviaData.correct_answer;
@@ -58,6 +61,14 @@ const card = () => {
     //Randomize order of answers in array
     allAnswers.sort(() => Math.random() - 0.5);
     setAllPossibleAnswers(allAnswers);
+  }
+
+  if (Loading) {
+    return (
+      <div className="LoadingAnimation">
+        <img src={LoadingAnimation} alt="Loading" />
+      </div>
+    );
   }
   // Render Card
   return (
