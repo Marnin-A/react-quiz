@@ -5,10 +5,9 @@ import "./card.css";
 
 const card = () => {
   const [TriviaData, setTriviaData] = useState([]);
-  // const [correctAnswer, setCorrectAnswer] = useState("");
-  // const [incorrectAnswers, setinCorrectAnswers] = useState([]);
   const [allPossibleAnswers, setAllPossibleAnswers] = useState([]);
   const [Loading, setLoading] = useState(true);
+  const [answer, setAnswer] = useState("");
 
   //combines correct and incorrect answer into single array
   async function combineAllAnswers(incorrectAnswers, correctAnswer) {
@@ -40,8 +39,8 @@ const card = () => {
         const wrong_answers = TriviaData.incorrect_answers;
         incorrectAnswers = wrong_answers;
         correctAnswer = answer;
+        setAnswer(answer);
         combineAllAnswers(incorrectAnswers, correctAnswer);
-        console.log(correctAnswer);
       })
       .catch(() => {
         console.log("There was an error");
@@ -66,26 +65,69 @@ const card = () => {
       .replace(/(&#039\;)/g, "'")
       .replace(/(&amp\;)/g, '"');
   }
+  let SelectedAnswer;
+  function verifyAnswer(selectedAnswer) {
+    //Checks if the selected answer equals the correct answer
+    if (selectedAnswer == answer) {
+      NextQuestion();
+      console.log("Correct");
+    } else {
+      console.log("Wrong");
+      console.log(answer);
+    }
+  }
   // Render Card
   return (
     <div className="card">
       <div className="card-content">
         <h3>{removeCharacters(TriviaData.question)}</h3>
         <div>
-          <input type="checkbox" name="" id="" />
-          <span>{allPossibleAnswers[0]}</span>
+          {
+            <button
+              onClick={() => {
+                SelectedAnswer = allPossibleAnswers[0];
+                verifyAnswer(SelectedAnswer);
+              }}
+            >
+              {removeCharacters(allPossibleAnswers[0])}
+            </button>
+          }
         </div>
         <div>
-          <input type="checkbox" name="" id="" />
-          {allPossibleAnswers[1]}
+          {
+            <button
+              onClick={() => {
+                verifyAnswer(allPossibleAnswers[1]);
+                console.log(correctAnswer);
+              }}
+            >
+              {removeCharacters(allPossibleAnswers[1])}
+            </button>
+          }
         </div>
         <div>
-          <input type="checkbox" name="" id="" />
-          {allPossibleAnswers[2]}
+          {
+            <button
+              onClick={() => {
+                verifyAnswer(allPossibleAnswers[2]);
+                console.log(correctAnswer);
+              }}
+            >
+              {removeCharacters(allPossibleAnswers[2])}
+            </button>
+          }
         </div>
         <div>
-          <input type="checkbox" name="" id="" />
-          {allPossibleAnswers[3]}
+          {
+            <button
+              onClick={() => {
+                verifyAnswer(allPossibleAnswers[3]);
+                console.log(correctAnswer);
+              }}
+            >
+              {removeCharacters(allPossibleAnswers[3])}
+            </button>
+          }
         </div>
       </div>
       <div className="btns">
