@@ -2,9 +2,9 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import LoadingAnimation from "../../assets/quiz_loading.gif";
 import Congratulations from "../congratulations/congratulations";
-import "./card.css";
+import "./quiz.css";
 
-const card = () => {
+const quiz = () => {
   const [TriviaData, setTriviaData] = useState([]);
   const [allPossibleAnswers, setAllPossibleAnswers] = useState([]);
   const [Loading, setLoading] = useState(true);
@@ -88,10 +88,10 @@ const card = () => {
       </div>
     );
   }
-  // Render Card
+  // Render Quiz
   return (
-    <div className="card">
-      <div className="card-content">
+    <div className="quiz">
+      <div className="quiz-content">
         <div>{counter}/5</div>
         <h3>{removeCharacters(TriviaData.question)}</h3>
         <div className="options">
@@ -158,4 +158,4 @@ const card = () => {
   );
 };
 
-export default card;
+export default quiz;

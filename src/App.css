@@ -4,3 +4,57 @@
   align-items: center;
   font-family: Roboto, Arial, Helvetica, sans-serif;
 }
+.card {
+  width: 500px;
+  height: 400px;
+  background-color: rgb(255, 255, 255);
+  border-radius: 15px;
+  display: flex;
+  flex-direction: column;
+  border: 2px solid #8d44ad;
+  padding: 20px;
+  margin-top: 30px;
+}
+
+.name-input {
+  justify-self: flex-end;
+  margin-top: 15px;
+  margin-bottom: 20px;
+  height: 30px;
+  border-radius: 5px;
+}
+.name-input:hover {
+  box-shadow: 1px 0px 15px #cf85ef;
+}
+.difficulties-categories {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 10px;
+  margin-bottom: 30px;
+}
+.difficulties {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.app-h3 {
+  color: #8d44ad;
+}
+.difficulty-btn {
+  border: 2px solid #8d44ad;
+  background-color: white;
+  color: #000000;
+  justify-self: flex-end;
+
+  border-radius: 5px;
+}
+#start-quiz {
+  background-color: #8d44ad;
+  color: white;
+  margin-bottom: 10px;
+  height: 50px;
+  width: 130px;
+  border-radius: 5px;
+  align-self: center;
+}
