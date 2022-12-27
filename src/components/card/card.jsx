@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import LoadingAnimation from "../../assets/quiz_loading.gif";
+import Congratulations from "../congratulations/congratulations";
 import "./card.css";
 
 const card = () => {
@@ -8,6 +9,8 @@ const card = () => {
   const [allPossibleAnswers, setAllPossibleAnswers] = useState([]);
   const [Loading, setLoading] = useState(true);
   const [answer, setAnswer] = useState("");
+  // Set correct answer counter state
+  const [counter, setCounter] = useState(1);
 
   //combines correct and incorrect answer into single array
   async function combineAllAnswers(incorrectAnswers, correctAnswer) {
@@ -70,16 +73,26 @@ const card = () => {
     //Checks if the selected answer equals the correct answer
     if (selectedAnswer == answer) {
       NextQuestion();
+      setCounter((count) => count + 1);
       console.log("Correct");
     } else {
       console.log("Wrong");
       console.log(answer);
     }
   }
+
+  if (counter > 2) {
+    return (
+      <div>
+        <Congratulations />
+      </div>
+    );
+  }
   // Render Card
   return (
     <div className="card">
       <div className="card-content">
+        <div>{counter}/5</div>
         <h3>{removeCharacters(TriviaData.question)}</h3>
         <div className="options">
           <div>
@@ -137,8 +150,8 @@ const card = () => {
         </div>
       </div>
       <div className="btns">
-        <button id="next" onClick={NextQuestion}>
-          Next
+        <button id="skip" onClick={NextQuestion}>
+          Skip
         </button>
       </div>
     </div>
