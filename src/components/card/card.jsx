@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import LoadingAnimation from "../assets/quiz_loading.gif";
+import LoadingAnimation from "../../assets/quiz_loading.gif";
 import "./card.css";
 
 const card = () => {
@@ -81,59 +81,62 @@ const card = () => {
     <div className="card">
       <div className="card-content">
         <h3>{removeCharacters(TriviaData.question)}</h3>
-        <div>
-          {
-            <button
-              onClick={() => {
-                SelectedAnswer = allPossibleAnswers[0];
-                verifyAnswer(SelectedAnswer);
-              }}
-            >
-              {removeCharacters(allPossibleAnswers[0])}
-            </button>
-          }
-        </div>
-        <div>
-          {
-            <button
-              onClick={() => {
-                verifyAnswer(allPossibleAnswers[1]);
-                console.log(correctAnswer);
-              }}
-            >
-              {removeCharacters(allPossibleAnswers[1])}
-            </button>
-          }
-        </div>
-        <div>
-          {
-            <button
-              onClick={() => {
-                verifyAnswer(allPossibleAnswers[2]);
-                console.log(correctAnswer);
-              }}
-            >
-              {removeCharacters(allPossibleAnswers[2])}
-            </button>
-          }
-        </div>
-        <div>
-          {
-            <button
-              onClick={() => {
-                verifyAnswer(allPossibleAnswers[3]);
-                console.log(correctAnswer);
-              }}
-            >
-              {removeCharacters(allPossibleAnswers[3])}
-            </button>
-          }
+        <div className="options">
+          <div>
+            {
+              <button
+                className="option"
+                onClick={() => {
+                  SelectedAnswer = allPossibleAnswers[0];
+                  verifyAnswer(SelectedAnswer);
+                }}
+              >
+                {removeCharacters(allPossibleAnswers[0])}
+              </button>
+            }
+          </div>
+          <div>
+            {
+              <button
+                className="option"
+                onClick={() => {
+                  verifyAnswer(allPossibleAnswers[1]);
+                  console.log(correctAnswer);
+                }}
+              >
+                {removeCharacters(allPossibleAnswers[1])}
+              </button>
+            }
+          </div>
+          <div>
+            {
+              <button
+                className="option"
+                onClick={() => {
+                  verifyAnswer(allPossibleAnswers[2]);
+                  console.log(correctAnswer);
+                }}
+              >
+                {removeCharacters(allPossibleAnswers[2])}
+              </button>
+            }
+          </div>
+          <div>
+            {
+              <button
+                className="option"
+                onClick={() => {
+                  verifyAnswer(allPossibleAnswers[3]);
+                  console.log(correctAnswer);
+                }}
+              >
+                {removeCharacters(allPossibleAnswers[3])}
+              </button>
+            }
+          </div>
         </div>
       </div>
       <div className="btns">
-        <button id="submit" type="submit">
-          Submit
-        </button>
         <button id="next" onClick={NextQuestion}>
           Next
         </button>
