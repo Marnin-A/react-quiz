@@ -1,6 +1,7 @@
 import { useState } from "react";
 import "./App.css";
 import Quiz from "./components/card/quiz";
+import Dropdown from "./components/Dropdown/dropdown";
 
 function App() {
   const [username, setUsername] = useState("Not Marnin");
@@ -22,26 +23,7 @@ function App() {
           </div>
           <div className="categories">
             <h3 className="app-h3">Choose category</h3>
-            <div>
-              <input type="checkbox" name="general-knowledge" id="" />
-              <label for="">General Knowledge</label>
-            </div>
-            <div>
-              <input type="checkbox" name="science-and-nature" id="" />
-              <label for="">Science and Nature</label>
-            </div>
-            <div>
-              <input type="checkbox" name="geography" id="" />
-              <label for="">Geography</label>
-            </div>
-            <div>
-              <input type="checkbox" name="mythology" id="" />
-              <label for="">Mythology</label>
-            </div>
-            <div>
-              <input type="checkbox" name="science-and-computers" id="" />
-              <label for="">Science and Computers</label>
-            </div>
+            <Dropdown placeHolder="Select question category" />
           </div>
         </div>
         <button id="start-quiz">Start Quiz</button>

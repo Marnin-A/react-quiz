@@ -29,8 +29,9 @@
 .difficulties-categories {
   display: flex;
   justify-content: space-between;
-  margin-top: 10px;
-  margin-bottom: 30px;
+
+  margin: 10px 30px 50px 30px;
+  height: 150px;
 }
 .difficulties {
   display: flex;
@@ -48,6 +49,9 @@
   justify-self: flex-end;
 
   border-radius: 5px;
+}
+.categories {
+  width: max-content;
 }
 #start-quiz {
   background-color: #8d44ad;
