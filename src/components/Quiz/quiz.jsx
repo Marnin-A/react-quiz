@@ -81,7 +81,7 @@ const quiz = () => {
     }
   }
 
-  if (counter > 2) {
+  if (counter > 5) {
     return (
       <div>
         <Congratulations />
@@ -90,69 +90,71 @@ const quiz = () => {
   }
   // Render Quiz
   return (
-    <div className="quiz">
-      <div className="quiz-content">
-        <div>{counter}/5</div>
-        <h3>{removeCharacters(TriviaData.question)}</h3>
-        <div className="options">
-          <div>
-            {
-              <button
-                className="option"
-                onClick={() => {
-                  SelectedAnswer = allPossibleAnswers[0];
-                  verifyAnswer(SelectedAnswer);
-                }}
-              >
-                {removeCharacters(allPossibleAnswers[0])}
-              </button>
-            }
-          </div>
-          <div>
-            {
-              <button
-                className="option"
-                onClick={() => {
-                  verifyAnswer(allPossibleAnswers[1]);
-                  console.log(correctAnswer);
-                }}
-              >
-                {removeCharacters(allPossibleAnswers[1])}
-              </button>
-            }
-          </div>
-          <div>
-            {
-              <button
-                className="option"
-                onClick={() => {
-                  verifyAnswer(allPossibleAnswers[2]);
-                  console.log(correctAnswer);
-                }}
-              >
-                {removeCharacters(allPossibleAnswers[2])}
-              </button>
-            }
-          </div>
-          <div>
-            {
-              <button
-                className="option"
-                onClick={() => {
-                  verifyAnswer(allPossibleAnswers[3]);
-                  console.log(correctAnswer);
-                }}
-              >
-                {removeCharacters(allPossibleAnswers[3])}
-              </button>
-            }
+    <div id="body">
+      <div className="quiz">
+        <div className="quiz-content">
+          <div>{counter}/5</div>
+          <h3>{removeCharacters(TriviaData.question)}</h3>
+          <div className="options">
+            <div>
+              {
+                <button
+                  className="option"
+                  onClick={() => {
+                    SelectedAnswer = allPossibleAnswers[0];
+                    verifyAnswer(SelectedAnswer);
+                  }}
+                >
+                  {removeCharacters(allPossibleAnswers[0])}
+                </button>
+              }
+            </div>
+            <div>
+              {
+                <button
+                  className="option"
+                  onClick={() => {
+                    verifyAnswer(allPossibleAnswers[1]);
+                    console.log(correctAnswer);
+                  }}
+                >
+                  {removeCharacters(allPossibleAnswers[1])}
+                </button>
+              }
+            </div>
+            <div>
+              {
+                <button
+                  className="option"
+                  onClick={() => {
+                    verifyAnswer(allPossibleAnswers[2]);
+                    console.log(correctAnswer);
+                  }}
+                >
+                  {removeCharacters(allPossibleAnswers[2])}
+                </button>
+              }
+            </div>
+            <div>
+              {
+                <button
+                  className="option"
+                  onClick={() => {
+                    verifyAnswer(allPossibleAnswers[3]);
+                    console.log(correctAnswer);
+                  }}
+                >
+                  {removeCharacters(allPossibleAnswers[3])}
+                </button>
+              }
+            </div>
           </div>
         </div>
-      </div>
-      <div className="btns">
-        <button id="skip" onClick={NextQuestion}>
-          Skip
-        </button>
+        <div className="btns">
+          <button id="skip" onClick={NextQuestion}>
+            Skip
+          </button>
+        </div>
       </div>
     </div>
   );
