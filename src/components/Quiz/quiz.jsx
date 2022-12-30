@@ -9,6 +9,7 @@ const quiz = () => {
   const [allPossibleAnswers, setAllPossibleAnswers] = useState([]);
   const [Loading, setLoading] = useState(true);
   const [answer, setAnswer] = useState("");
+
   // Set correct answer counter state
   const [counter, setCounter] = useState(1);
 
@@ -21,28 +22,34 @@ const quiz = () => {
     });
 
     allAnswers.push(correctAnswer);
+
     //Randomize order of answers in array
     allAnswers.sort(() => Math.random() - 0.5);
     setAllPossibleAnswers(allAnswers);
   }
+
+  let url;
+  // Get the URL and Username
+  useEffect(() => {
+    const URL = JSON.parse(localStorage.getItem("url"));
+    url = URL;
+  }, []);
 
   let incorrectAnswers;
   let correctAnswer;
   // Get question and answer data
   const NextQuestion = () => {
     axios
-      .get(
-        "https://opentdb.com/api.php?amount=1&category=18&difficulty=medium&type=multiple"
-      )
+      .get(url)
       .then((res) => {
-        setLoading(false);
         const TriviaData = res.data.results[0];
-        setTriviaData(TriviaData);
         const answer = TriviaData.correct_answer;
         const wrong_answers = TriviaData.incorrect_answers;
         incorrectAnswers = wrong_answers;
         correctAnswer = answer;
+        setLoading(false);
         setAnswer(answer);
+        setTriviaData(TriviaData);
         combineAllAnswers(incorrectAnswers, correctAnswer);
       })
       .catch(() => {
@@ -54,6 +61,7 @@ const quiz = () => {
     NextQuestion();
   }, []);
 
+  // Set loading animation
   if (Loading) {
     return (
       <div className="LoadingAnimation">
@@ -61,6 +69,8 @@ const quiz = () => {
       </div>
     );
   }
+
+  // Define a function to convert special html characters, to normal characters
   function removeCharacters(question) {
     return question
       .replace(/(&quot\;)/g, '"')
@@ -68,6 +78,7 @@ const quiz = () => {
       .replace(/(&#039\;)/g, "'")
       .replace(/(&amp\;)/g, '"');
   }
+
   let SelectedAnswer;
   function verifyAnswer(selectedAnswer) {
     //Checks if the selected answer equals the correct answer
@@ -81,7 +92,9 @@ const quiz = () => {
     }
   }
 
-  if (counter > 5) {
+  // Define an if statement to check
+  // if the number of correct answers is more than 5
+  if (counter > 1) {
     return (
       <div>
         <Congratulations />
@@ -115,7 +128,6 @@ const quiz = () => {
                   className="option"
                   onClick={() => {
                     verifyAnswer(allPossibleAnswers[1]);
-                    console.log(correctAnswer);
                   }}
                 >
                   {removeCharacters(allPossibleAnswers[1])}
@@ -128,7 +140,6 @@ const quiz = () => {
                   className="option"
                   onClick={() => {
                     verifyAnswer(allPossibleAnswers[2]);
-                    console.log(correctAnswer);
                   }}
                 >
                   {removeCharacters(allPossibleAnswers[2])}
@@ -141,7 +152,6 @@ const quiz = () => {
                   className="option"
                   onClick={() => {
                     verifyAnswer(allPossibleAnswers[3]);
-                    console.log(correctAnswer);
                   }}
                 >
                   {removeCharacters(allPossibleAnswers[3])}

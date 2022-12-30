@@ -1,15 +1,22 @@
-import React from "react";
+import React, { useEffect } from "react";
 
 import "./congratulations.css";
 
-const congratulations = (props) => {
+const congratulations = () => {
   function refreshPage() {
     window.location.reload(false);
   }
+  let name;
+  useEffect(() => {
+    name = JSON.parse(localStorage.getItem("name"));
+
+    console.log(name);
+  }, []);
+
   return (
     <div className="congrats">
       <div id="message">
-        <h1>Congratulations, props.username 🎉</h1>
+        <h1>Congratulations, {name} 🎉</h1>
       </div>
 
       <button className="play-btn" onClick={refreshPage}>

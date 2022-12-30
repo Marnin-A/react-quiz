@@ -1,7 +1,6 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "./Home.css";
-import Quiz from "../Quiz/quiz";
 
 function App() {
   const [username, setUsername] = useState("");
@@ -29,6 +28,18 @@ function App() {
   };
   // Define the URL
   let URL = `https://opentdb.com/api.php?amount=1&category=${category}&difficulty=${difficulty}&type=multiple`;
+
+  // Create a function to set the URL
+  const setURL = () => {
+    localStorage.setItem("url", JSON.stringify(URL));
+  };
+
+  // Create a function to get the URL
+  const setName = () => {
+    localStorage.setItem("name", JSON.stringify(username));
+  };
+
+  // Render Home component
   return (
     <div>
       <div className="Home">
@@ -100,7 +111,8 @@ function App() {
           <button
             id="start-quiz"
             onClick={() => {
-              console.log(username);
+              setURL();
+              setName();
               navigateToQuiz();
             }}
           >
