@@ -1,16 +1,18 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 
 import "./congratulations.css";
 
 const congratulations = () => {
+  const [name, setName] = useState("");
+  // Define a function to refresh the page
   function refreshPage() {
     window.location.reload(false);
   }
-  let name;
-  useEffect(() => {
-    name = JSON.parse(localStorage.getItem("name"));
 
-    console.log(name);
+  // Get the users name from local storage onload
+  useEffect(() => {
+    let Name = JSON.parse(localStorage.getItem("name"));
+    setName(Name);
   }, []);
 
   return (

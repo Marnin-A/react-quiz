@@ -8,36 +8,42 @@ const quiz = () => {
   const [TriviaData, setTriviaData] = useState([]);
   const [allPossibleAnswers, setAllPossibleAnswers] = useState([]);
   const [Loading, setLoading] = useState(true);
+  const [iscorrect, setIsCorrect] = useState(false);
+  const [borderColour, setBorderColour] = useState("2px solid #8d44ad");
   const [answer, setAnswer] = useState("");
 
   // Set correct answer counter state
   const [counter, setCounter] = useState(1);
 
+  // Function to change to indexes of the answers
+  const Randomize = (answers) => {
+    answers.sort(() => Math.random() - 0.5);
+  };
   //combines correct and incorrect answer into single array
   async function combineAllAnswers(incorrectAnswers, correctAnswer) {
     let allAnswers = [];
 
+    // Put all the answers into a single array
     incorrectAnswers.map((incorrectAnswer) => {
       allAnswers.push(incorrectAnswer);
     });
-
     allAnswers.push(correctAnswer);
 
     //Randomize order of answers in array
-    allAnswers.sort(() => Math.random() - 0.5);
+    Randomize(allAnswers);
     setAllPossibleAnswers(allAnswers);
   }
 
-  let url;
   // Get the URL and Username
+  let url;
   useEffect(() => {
     const URL = JSON.parse(localStorage.getItem("url"));
     url = URL;
   }, []);
 
+  // Get question and answer data
   let incorrectAnswers;
   let correctAnswer;
-  // Get question and answer data
   const NextQuestion = () => {
     axios
       .get(url)
@@ -57,6 +63,9 @@ const quiz = () => {
       });
   };
 
+  const setBorder = () => {
+    setBorderColour("2px solid #8d44ad");
+  };
   useEffect(() => {
     NextQuestion();
   }, []);
@@ -64,8 +73,12 @@ const quiz = () => {
   // Set loading animation
   if (Loading) {
     return (
-      <div className="LoadingAnimation">
-        <img src={LoadingAnimation} alt="Loading" />
+      <div>
+        <img
+          className="LoadingAnimation"
+          src={LoadingAnimation}
+          alt="Loading"
+        />
       </div>
     );
   }
@@ -85,26 +98,32 @@ const quiz = () => {
     if (selectedAnswer == answer) {
       NextQuestion();
       setCounter((count) => count + 1);
-      console.log("Correct");
+      setIsCorrect(true);
+      setBorderColour("2px solid green");
+      Randomize(allPossibleAnswers);
     } else {
-      console.log("Wrong");
-      console.log(answer);
+      setIsCorrect(false);
+      setBorderColour("2px solid red");
     }
   }
 
-  // Define an if statement to check
-  // if the number of correct answers is more than 5
-  if (counter > 1) {
+  // Define an if statement to check if the number
+  // of correct answers is more than 5
+  if (counter > 5) {
     return (
       <div>
         <Congratulations />
       </div>
     );
   }
+
   // Render Quiz
   return (
     <div id="body">
-      <div className="quiz">
+      <div
+        className="quiz"
+        style={{ border: iscorrect ? borderColour : borderColour }}
+      >
         <div className="quiz-content">
           <div>{counter}/5</div>
           <h3>{removeCharacters(TriviaData.question)}</h3>
@@ -116,6 +135,7 @@ const quiz = () => {
                   onClick={() => {
                     SelectedAnswer = allPossibleAnswers[0];
                     verifyAnswer(SelectedAnswer);
+                    setTimeout(setBorder, 500);
                   }}
                 >
                   {removeCharacters(allPossibleAnswers[0])}
@@ -127,7 +147,9 @@ const quiz = () => {
                 <button
                   className="option"
                   onClick={() => {
-                    verifyAnswer(allPossibleAnswers[1]);
+                    SelectedAnswer = allPossibleAnswers[1];
+                    verifyAnswer(SelectedAnswer);
+                    setTimeout(setBorder, 500);
                   }}
                 >
                   {removeCharacters(allPossibleAnswers[1])}
@@ -139,7 +161,9 @@ const quiz = () => {
                 <button
                   className="option"
                   onClick={() => {
-                    verifyAnswer(allPossibleAnswers[2]);
+                    SelectedAnswer = allPossibleAnswers[2];
+                    verifyAnswer(SelectedAnswer);
+                    setTimeout(setBorder, 500);
                   }}
                 >
                   {removeCharacters(allPossibleAnswers[2])}
@@ -151,7 +175,9 @@ const quiz = () => {
                 <button
                   className="option"
                   onClick={() => {
-                    verifyAnswer(allPossibleAnswers[3]);
+                    SelectedAnswer = allPossibleAnswers[3];
+                    verifyAnswer(SelectedAnswer);
+                    setTimeout(setBorder, 500);
                   }}
                 >
                   {removeCharacters(allPossibleAnswers[3])}
