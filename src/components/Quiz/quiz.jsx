@@ -58,8 +58,8 @@ const quiz = () => {
         setTriviaData(TriviaData);
         combineAllAnswers(incorrectAnswers, correctAnswer);
       })
-      .catch(() => {
-        console.log("There was an error");
+      .catch((error) => {
+        console.log(error);
       });
   };
 

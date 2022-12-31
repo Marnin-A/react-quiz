@@ -2,7 +2,7 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "./Home.css";
 
-function App() {
+function Home() {
   const [username, setUsername] = useState("");
   const [category, setCategory] = useState("");
   const [difficulty, setDifficulty] = useState("");
@@ -19,9 +19,10 @@ function App() {
     setCategory(e.target.value);
   };
 
-  // Create a function to navigate to the quiz component
+  // Create a constant to access the useNavigate function
   const navigate = useNavigate();
 
+  // Define a function to use navigate to get to quiz
   const navigateToQuiz = () => {
     // Navigate to /quiz
     navigate("/quiz");
@@ -120,9 +121,8 @@ function App() {
           </button>
         </div>
       </div>
-      {/* <Quiz username={username} /> */}
     </div>
   );
 }
 
-export default App;
+export default Home;
