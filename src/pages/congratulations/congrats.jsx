@@ -1,5 +1,6 @@
 import React from "react";
+import styles from "./congrats.module.css";
 
 export const Congrats = () => {
-  return <div>congrats</div>;
+  return <div className={styles.congrats}>congrats</div>;
 };
