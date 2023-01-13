@@ -30,7 +30,6 @@ export const Quiz = () => {
         // Combine all the answers into one array
         setTriviaData(Data);
         combineAllAnswers(incorrectAnswers, correctAnswer);
-        // console.log(Data);
       })
       .catch((error) => {
         console.log(error);
@@ -54,12 +53,9 @@ export const Quiz = () => {
     Randomize(allAnswers);
     setAllPossibleAnswers(allAnswers);
   }
-
-  //
+  // Get the data onload
   useEffect(() => {
     getData();
-    setCounter(1);
-    console.log(correctAnswer);
   }, []);
 
   // Set loading animation
