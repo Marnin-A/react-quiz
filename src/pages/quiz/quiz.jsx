@@ -1,5 +1,5 @@
 import LoadingAnimation from "../../assets/quiz_loading.gif";
-import Button from "../../components/button/button";
+import Congrats from "../congratulations/congrats";
 import React, { useState, useEffect } from "react";
 import styles from "./quiz.module.css";
 import axios from "axios";
@@ -8,6 +8,9 @@ export const Quiz = () => {
   const [TriviaData, setTriviaData] = useState([]);
   const [Loading, setLoading] = useState(true);
   const [AllPossibleAnswers, setAllPossibleAnswers] = useState([]);
+  const [counter, setCounter] = useState(1);
+  const [borderColour, setBorderColour] = useState("2px solid #8d44ad");
+  const [iscorrect, setIsCorrect] = useState(false);
 
   // Retrieve the required data
   let incorrectAnswers,
@@ -55,8 +58,9 @@ export const Quiz = () => {
   //
   useEffect(() => {
     getData();
+    console.log(correctAnswer);
   }, []);
-  console.log(AllPossibleAnswers);
+
   // Set loading animation
   if (Loading) {
     return (
@@ -69,13 +73,54 @@ export const Quiz = () => {
       </div>
     );
   }
+  // Define a function to convert special html characters, to normal characters
+  // function removeCharacters(question) {
+  //   return question
+  //     .replace(/(&quot\;)/g, '"')
+  //     .replace(/(&rsquo\;)/g, '"')
+  //     .replace(/(&#039\;)/g, "'")
+  //     .replace(/(&amp\;)/g, '"');
+  // }
+  const setBorder = () => {
+    setBorderColour("2px solid #8d44ad");
+  };
+  let SelectedAnswer;
+  const verifyAnswer = (option) => {
+    if (TriviaData.correct_answer === option) {
+      setCounter((count) => count + 1);
+      getData();
+      setBorderColour("2px solid green");
+    } else {
+      setIsCorrect(false);
+      setBorderColour("2px solid red");
+    }
+  };
+
+  if (counter > 5) {
+    return <Congrats />;
+  }
   return (
-    <div className={styles.quiz}>
-      {/* <div>{counter}/5</div> */}
+    <div
+      className={styles.quiz}
+      style={{ border: iscorrect ? borderColour : borderColour }}
+    >
+      <div>{counter}/5</div>
       <h3 className={styles.question}>{TriviaData.question}</h3>
       <div className={styles.options}>
-        {AllPossibleAnswers.map((answer) => {
-          return <Button answer={answer} />;
+        {AllPossibleAnswers.map((answer, id) => {
+          return (
+            <button
+              className={styles.btn}
+              key={id}
+              onClick={() => {
+                SelectedAnswer = answer;
+                verifyAnswer(SelectedAnswer);
+                setTimeout(setBorder, 500);
+              }}
+            >
+              {answer}
+            </button>
+          );
         })}
       </div>
     </div>

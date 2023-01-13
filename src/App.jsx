@@ -1,5 +1,5 @@
 import { Routes, Route } from "react-router-dom";
-import { Home, Quiz, Congrats } from "./pages";
+import { Home, Quiz } from "./pages";
 import styles from "./App.module.css";
 
 // 🟡Notes🟡
@@ -17,7 +17,6 @@ function App() {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/quiz" element={<Quiz />} />
-        <Route path="/congrats" element={<Congrats />} />
       </Routes>
     </div>
   );
