@@ -1,6 +1,6 @@
 import { Routes, Route } from "react-router-dom";
 import { Home, Quiz, Congrats } from "./pages";
-import styles from "./App.css";
+import styles from "./App.module.css";
 
 // 🟡Notes🟡
 //  1. Change font

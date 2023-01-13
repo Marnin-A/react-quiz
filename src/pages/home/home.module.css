@@ -9,3 +9,57 @@
   border: 2px solid #8d44ad;
   margin: 50px;
 }
+.name {
+  width: 100%;
+  margin-left: 10%;
+}
+h3 {
+  color: #8d44ad;
+}
+#name__input {
+  width: 90%;
+  justify-self: flex-end;
+  margin-top: 15px;
+  margin-bottom: 20px;
+  height: 30px;
+  border-radius: 5px;
+}
+#name__input:hover {
+  box-shadow: 1px 0px 15px #cf85ef;
+}
+.difficulties__categories {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}
+.difficulties {
+  display: flex;
+  flex-direction: column;
+  margin-left: 5%;
+  margin-right: 5%;
+}
+.difficulties__btn {
+  border: 2px solid #8d44ad;
+  background-color: white;
+  color: #000000;
+  justify-self: flex-end;
+  margin-top: 10%;
+  border-radius: 5px;
+}
+.difficulties__btn:focus {
+  border: 2px solid black;
+  background-color: #e36d9c;
+}
+.categories__list {
+  margin-top: 8%;
+}
+.start {
+  background-color: #8d44ad;
+  color: white;
+  margin-top: 5%;
+  height: 50px;
+  width: 130px;
+  border-radius: 5px;
+  align-self: center;
+}
