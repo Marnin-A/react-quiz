@@ -1,11 +1,14 @@
 .congrats {
-  width: 500px;
-  height: 400px;
+  width: 100%;
+  max-width: 500px;
+  font-size: 2em;
+  font-weight: 700;
+  height: max-content;
   background-color: rgb(255, 255, 255);
   border-radius: 15px;
   display: flex;
   flex-direction: column;
   align-items: center;
   border: 2px solid #8d44ad;
-  margin: 50px;
+  padding: 5%;
 }

@@ -58,6 +58,7 @@ export const Quiz = () => {
   //
   useEffect(() => {
     getData();
+    setCounter(1);
     console.log(correctAnswer);
   }, []);
 
