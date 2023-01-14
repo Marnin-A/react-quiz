@@ -1,8 +1,7 @@
 .congrats {
   width: 100%;
   max-width: 500px;
-  font-size: 2em;
-  font-weight: 700;
+  padding: 5%;
   height: max-content;
   background-color: rgb(255, 255, 255);
   border-radius: 15px;
@@ -11,4 +10,27 @@
   align-items: center;
   border: 2px solid #8d44ad;
   padding: 5%;
+}
+.congrats__text {
+  font-size: 2em;
+  font-weight: 700;
+}
+.btns {
+  width: 80%;
+  margin-top: 10%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+.btn {
+  height: 4em;
+  width: 6em;
+  border-radius: 15%;
+  background-color: #8d44ad;
+  color: white;
+}
+.btn:hover {
+  color: black;
+  background-color: #b070cb;
+  border: 2px solid #520075;
 }

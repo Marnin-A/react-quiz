@@ -19,11 +19,11 @@ export const Quiz = () => {
 
   // Get data using axios
   const getData = () => {
-    setLoading(false);
     let URL = JSON.parse(localStorage.getItem("url"));
     axios
       .get(URL)
       .then((res) => {
+        setLoading(false);
         const Data = res.data.results[0];
         incorrectAnswers = Data.incorrect_answers;
         correctAnswer = Data.correct_answer;
@@ -93,7 +93,7 @@ export const Quiz = () => {
     }
   };
 
-  if (counter > 5) {
+  if (counter < 5) {
     return <Congrats />;
   }
   return (
