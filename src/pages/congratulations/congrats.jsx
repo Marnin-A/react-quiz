@@ -15,7 +15,7 @@ const congrats = () => {
     navigate("/");
   };
   const gotToQuiz = () => {
-    navigate("/");
+    navigate("/quiz");
   };
 
   return (
