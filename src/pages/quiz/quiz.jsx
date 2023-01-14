@@ -72,13 +72,13 @@ export const Quiz = () => {
     );
   }
   // Define a function to convert special html characters, to normal characters
-  // function removeCharacters(question) {
-  //   return question
-  //     .replace(/(&quot\;)/g, '"')
-  //     .replace(/(&rsquo\;)/g, '"')
-  //     .replace(/(&#039\;)/g, "'")
-  //     .replace(/(&amp\;)/g, '"');
-  // }
+  function removeCharacters(text) {
+    return text
+      .replace(/(&quot\;)/g, '"')
+      .replace(/(&rsquo\;)/g, '"')
+      .replace(/(&#039\;)/g, "'")
+      .replace(/(&amp\;)/g, '"');
+  }
   const setBorder = () => {
     setBorderColour("2px solid #8d44ad");
   };
@@ -94,24 +94,18 @@ export const Quiz = () => {
     }
   };
 
-  // Get the user's name from local storage
-  let Name = JSON.parse(localStorage.getItem("name"));
-  // Define a function to route you back to the homepage
-  const gotToHome = () => {
-    const navigate = useNavigate();
-    navigate("/");
-  };
-
   if (counter > 5) {
     return <Congrats />;
   }
+
+  let FinalQuestion = removeCharacters(TriviaData.question);
   return (
     <div
       className={styles.quiz}
       style={{ border: iscorrect ? borderColour : borderColour }}
     >
       <div>{counter}/5</div>
-      <h3 className={styles.question}>{TriviaData.question}</h3>
+      <h3 className={styles.question}>{FinalQuestion}</h3>
       <div className={styles.options}>
         {AllPossibleAnswers.map((answer, id) => {
           return (
@@ -124,7 +118,7 @@ export const Quiz = () => {
                 setTimeout(setBorder, 500);
               }}
             >
-              {answer}
+              {removeCharacters(answer)}
             </button>
           );
         })}
