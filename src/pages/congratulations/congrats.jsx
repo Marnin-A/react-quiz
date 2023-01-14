@@ -1,5 +1,6 @@
 import React from "react";
 import styles from "./congrats.module.css";
+import { useNavigate } from "react-router-dom";
 
 const congrats = () => {
   // Get the user's name from local storage
@@ -8,6 +9,12 @@ const congrats = () => {
   function refreshPage() {
     window.location.reload(true);
   }
+  // Define a function to route you back to the homepage
+  const navigate = useNavigate();
+  const gotToHome = () => {
+    navigate("/");
+  };
+
   return (
     <div className={styles.congrats}>
       <div className={styles.congrats__text}>
@@ -15,7 +22,9 @@ const congrats = () => {
         {Name}🎉
       </div>
       <div className={styles.btns}>
-        <button className={styles.btn}>Home</button>
+        <button className={styles.btn} onClick={gotToHome}>
+          Home
+        </button>
         <button className={styles.btn} onClick={refreshPage}>
           Play Again
         </button>
