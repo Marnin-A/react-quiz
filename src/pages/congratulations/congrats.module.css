@@ -20,12 +20,12 @@
   margin-top: 10%;
   display: flex;
   flex-direction: row;
-  justify-content: space-between;
+  justify-content: center;
 }
 .btn {
   height: 4em;
-  width: 6em;
-  border-radius: 15%;
+  width: 10em;
+  border-radius: 55%;
   background-color: #8d44ad;
   color: white;
 }
