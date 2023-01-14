@@ -1,6 +1,7 @@
 import LoadingAnimation from "../../assets/quiz_loading.gif";
 import Congrats from "../congratulations/congrats";
 import React, { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import styles from "./quiz.module.css";
 import axios from "axios";
 
@@ -93,8 +94,36 @@ export const Quiz = () => {
     }
   };
 
-  if (counter < 5) {
-    return <Congrats />;
+  // Get the user's name from local storage
+  let Name = JSON.parse(localStorage.getItem("name"));
+  // Define a function to refresh the page
+  function refreshPage() {
+    window.location.reload(true);
+  }
+  // Define a function to route you back to the homepage
+
+  const gotToHome = () => {
+    const navigate = useNavigate();
+    navigate("/");
+  };
+
+  if (counter > 5) {
+    return (
+      <div className={styles.congrats}>
+        <div className={styles.congrats__text}>
+          Congratulations,{"\u00A0"}
+          {Name}🎉
+        </div>
+        <div className={styles.btns}>
+          <button className={styles.btn} onClick={gotToHome}>
+            Home
+          </button>
+          <button className={styles.btn} onClick={refreshPage}>
+            Play Again
+          </button>
+        </div>
+      </div>
+    );
   }
   return (
     <div
