@@ -5,13 +5,16 @@ import { useNavigate } from "react-router-dom";
 const congrats = () => {
   // Get the user's name from local storage
   let Name = JSON.parse(localStorage.getItem("name"));
-  // Define a function to refresh the page
-  function refreshPage() {
-    window.location.reload(true);
-  }
+  // // Define a function to refresh the page
+  // function refreshPage() {
+  //   window.location.reload(true);
+  // }
   // Define a function to route you back to the homepage
   const navigate = useNavigate();
   const gotToHome = () => {
+    navigate("/");
+  };
+  const gotToQuiz = () => {
     navigate("/");
   };
 
@@ -25,7 +28,7 @@ const congrats = () => {
         <button className={styles.btn} onClick={gotToHome}>
           Home
         </button>
-        <button className={styles.btn} onClick={refreshPage}>
+        <button className={styles.btn} onClick={gotToQuiz}>
           Play Again
         </button>
       </div>
