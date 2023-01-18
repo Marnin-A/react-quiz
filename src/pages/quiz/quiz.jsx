@@ -108,22 +108,7 @@ export const Quiz = () => {
   };
 
   if (counter > 5) {
-    return (
-      <div className={styles.congrats}>
-        <div className={styles.congrats__text}>
-          Congratulations,{"\u00A0"}
-          {Name}🎉
-        </div>
-        <div className={styles.btns}>
-          <button className={styles.btn} onClick={gotToHome}>
-            Home
-          </button>
-          <button className={styles.btn} onClick={refreshPage}>
-            Play Again
-          </button>
-        </div>
-      </div>
-    );
+    return <Congrats />;
   }
   return (
     <div
