@@ -94,7 +94,7 @@ export const Quiz = () => {
     }
   };
 
-  if (counter > 5) {
+  if (counter < 5) {
     return <Congrats />;
   }
 

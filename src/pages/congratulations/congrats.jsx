@@ -15,7 +15,8 @@ const congrats = () => {
     <div className={styles.congrats}>
       <div className={styles.congrats__text}>
         Congratulations,{"\u00A0"}
-        {Name}🎉
+        {Name}
+        <div className={styles.confetti}>🎉</div>
       </div>
       <div className={styles.btns}>
         <button className={styles.btn} onClick={gotToHome}>
