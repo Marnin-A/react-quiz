@@ -46,6 +46,6 @@
 @media only screen and (max-width: 600px) {
   .btn {
     height: 3em;
-    width: 6em;
+    width: max-content;
   }
 }
