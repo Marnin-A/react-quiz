@@ -11,7 +11,8 @@
   padding: 5%;
 }
 .LoadingAnimation {
-  height: max-content;
+  width: 80%;
+  max-width: 500px;
   border-radius: 15px;
   display: flex;
   flex-direction: column;
